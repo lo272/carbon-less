@@ -30,6 +30,8 @@
     }
 
     html { background: var(--ios-bg); }
+    html.onboarding-active { overflow: hidden; }
+    html.onboarding-active ::-webkit-scrollbar { display: none; }
 
     body {
       background: var(--ios-bg);
@@ -415,7 +417,7 @@
     .fade-overlay.show { opacity: 1; pointer-events: all; }
   </style>
 </head>
-<body class="light-mode">
+<body class="light-mode" onload="document.documentElement.classList.add('onboarding-active')">
 
   <!-- Nav bar -->
   <div class="nav">
@@ -976,6 +978,7 @@
         // Hide onboarding, scroll to top, enable slider
         onboard.classList.add('hidden');
         document.getElementById('main-page').classList.remove('locked');
+        document.documentElement.classList.remove('onboarding-active');
         window.scrollTo({ top: 0 });
         document.documentElement.scrollTop = 0;
         document.body.scrollTop = 0;
