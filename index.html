@@ -44,6 +44,7 @@
     }
 
     .page { max-width: 430px; margin: 0 auto; padding: 0 16px; }
+    .page.locked { pointer-events: none; user-select: none; }
 
     /* Nav bar */
     .nav {
@@ -443,7 +444,7 @@
     </div>
   </div>
 
-  <div class="page">
+  <div class="page locked" id="main-page">
 
     <div class="section-header" style="margin-top:8px;">Controls</div>
     <div class="list-card" style="padding:16px;">
@@ -974,6 +975,7 @@
       setTimeout(function() {
         // Hide onboarding, scroll to top, enable slider
         onboard.classList.add('hidden');
+        document.getElementById('main-page').classList.remove('locked');
         window.scrollTo({ top: 0 });
         document.documentElement.scrollTop = 0;
         document.body.scrollTop = 0;
